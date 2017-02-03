@@ -1,0 +1,70 @@
+// Place all the styles related to the shops controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin text-config($color, $size) {
+  color: $color;
+  font-family: 'Noto Sans Japanese', serif;
+  font-weight: 100;
+  font-size: $size;
+  margin: 0;
+}
+
+#introduction {
+  height:300px;
+  background-image: image-url("ramen.png");
+  min-height: 100%;
+  text-align: center;
+}
+
+h1.intro_text {
+  @include text-config(#fff, 40px);
+  padding: 40px;
+}
+
+p.intro_text {
+  @include text-config(#fff, 20px);
+}
+
+.shop_category {
+  text-align: center;
+  h1 {
+    @include text-config(#000, 40px);
+  }
+}
+
+#now_open_shop {
+  padding: 0 50px 0 50px;
+}
+
+#shop_container {
+  display: inline-block;
+  vertical-align:top;
+  width: 200px;
+  margin: 5px;
+  text-align: center;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+}
+
+.shop_description {
+  margin: 0 4px 0 4px;
+}
+
+.shop_name {
+  display: block;
+  width: 190px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+.shop_opening_hour {
+  height: 50px;
+}
+
+.shop_image {
+  width: 200px;
+  height: 200px;
+}
