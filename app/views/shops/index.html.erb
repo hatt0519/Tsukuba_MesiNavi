@@ -1,17 +1,12 @@
-<div id="introduction">
-  <h1 class="intro_text">さあ、ご飯にしよう</h1>
-  <p class="intro_text">つくば飯ナビはつくば市内で今開いている飲食店を探し出せるサービスです</p>
-  <p class="intro_text">お腹を満たして、引き続き研究を頑張りましょう！！</p>
+<%= render 'shops/top'%>
+<div id="search_button">
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#loading">開店しているお店を探す</button>
 </div>
-<div id="now_open_shop" class="row">
-  <div class="shop_category page-header">
-    <h1>開店しているお店</h1>
-  </div>
-  <% @shops.each do |shop| %>
-    <div id="shop_container" class=".col-md-6 .col-sm-4 .col-xs-1">
-      <%= image_tag("ramen.jpg", :alt => "イメージ", :class => "shop_image img-thumbnail") %>
-      <p class="shop_description shop_name"><%= shop.name %></p>
-      <p class="shop_description shop_opening_hour"><%=shop.opening_hours["weekday_text"][@week]%></p>
+<div class="modal fade" id="loading">
+  <div class="modal-dialog modal-lg modal-middle">
+    <div class="modal-body">
+      <%= image_tag("loading.gif", :size => "200×200") %>
     </div>
-  <% end %>
+  </div>
 </div>
+<div id="now_open_shop" class="row"></div>

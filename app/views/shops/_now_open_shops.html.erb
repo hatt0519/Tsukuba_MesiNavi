@@ -1,0 +1,10 @@
+<div class="shop_category page-header">
+  <h1>開店しているお店</h1>
+</div>
+<% @shops.each do |shop| %>
+  <div id="shop_container" class=".col-md-6 .col-sm-2">
+    <%= image_tag("ramen.jpg", :alt => "イメージ", :class => "shop_image img-thumbnail") %>
+    <p class="shop_description shop_name"><%= shop.name %></p>
+    <p class="shop_description shop_opening_hour"><%=shop.opening_hours["weekday_text"][@week]%></p>
+  </div>
+<% end %>
