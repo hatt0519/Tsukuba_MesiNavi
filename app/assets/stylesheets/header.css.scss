@@ -1,8 +1,15 @@
+$height: 60px;
+
 #header {
-  height: 60px;
+  height: $height;
   width: 100%;
   background-color: #f9f9fb;
   background-image: image-url("gwlabo.png");
   background-repeat: no-repeat;
   background-position: right top;
+}
+
+#logo {
+  height: $height;
+  margin-left: 20px;
 }
