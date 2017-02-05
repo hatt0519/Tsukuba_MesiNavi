@@ -7,7 +7,7 @@ $(function(){
 function requestOpenShops() {
   $("#search_button").on('click', function(){
     $.ajax({
-      url: location.href+'/../show.js',
+      url: location.href+'/../shops/show.js',
       type: "POST",
     });
     $("#search_button").hide();
