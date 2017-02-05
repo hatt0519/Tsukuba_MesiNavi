@@ -6,6 +6,7 @@ module TsukubaMesinavi
       def request_place_details_to_obj(request)
         get_result(TsukubaMesinavi::Entity::RequestPlaceDetails::END_POINT, request.create_request) do |response|
           result = response["result"]
+          return if result.nil?
           place_details = TsukubaMesinavi::Entity::ResponsePlaceDetails.new(result["name"],
                                                                             result["opening_hours"],
                                                                             result["photos"],
