@@ -4,11 +4,13 @@
 <div class="container">
   <div class="row">
     <% @shops.each do |shop| %>
-      <div id="shop_container" class="col-md-2">
-        <%= image_tag("ramen.jpg", :alt => "イメージ", :class => "shop_image img-thumbnail") %>
-        <p class="shop_description shop_name"><%= shop.name %></p>
-        <p class="shop_description shop_opening_hour"><%=shop.opening_hours["weekday_text"][@week]%></p>
-      </div>
+      <%= link_to shops_show_details_path(place_id: shop.place_id, lat: shop.lat, lng: shop.lng) do %>
+        <div id="shop_container" class="col-md-2">
+          <%= image_tag("ramen.jpg", :alt => "イメージ", :class => "shop_image img-thumbnail") %>
+          <p class="shop_description shop_name"><%= shop.name %></p>
+          <p class="shop_description shop_opening_hour"><%=shop.opening_hours["weekday_text"][@week]%></p>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

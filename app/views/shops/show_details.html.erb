@@ -1,0 +1,27 @@
+<%= javascript_include_tag "map" %>
+<%= stylesheet_link_tag "map"%>
+<div id="map"></div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= @api_key%>&callback=initMap">
+</script>
+
+<div class="container">
+  <table class="table">
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>店舗名</td>
+      <td class=""><%= @shop_api.name %></td>
+    </tr>
+    <tr>
+      <td>営業時間</td>
+      <td>
+        <ul style="list-style:none; margin-left: 0; padding-left: 0;">
+          <%@shop_api.opening_hours["weekday_text"].each do |opening_hour|%>
+            <li><%=opening_hour%></li>
+          <%end%>
+        </ul>
+      </td>
+  </table>
+</div>
