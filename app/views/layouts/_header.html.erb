@@ -1,3 +1,25 @@
 <div id="header">
-  <%= image_tag("logo.png", :id => "logo") %>
+  <%= link_to image_tag("logo.png", :id => "logo"), root_path %>
+  <%unless user_signed_in? %>
+    <div id="login_menu" class="dropdown">
+      <button id="login" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        ログイン
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="login">
+        <li><%=link_to "Facebook", user_facebook_omniauth_authorize_path%></li>
+        <li><%=link_to "Twitter", user_twitter_omniauth_authorize_path%></li>
+      </ul>
+    </div>
+  <% else %>
+  <div id="user" class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="user_menu" data-toggle="dropdown">
+      <%=image_tag(current_user.avatar_url)%>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="user_menu">
+      <li id="username"><%=current_user.user_name%></li>
+      <li class="line"><%=link_to "ログアウト", destroy_user_session_path, {:method => "delete"}%></li>
+    </ul>
+  </div>
+  <% end %>
 </div>

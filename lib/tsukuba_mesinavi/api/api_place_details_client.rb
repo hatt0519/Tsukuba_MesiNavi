@@ -7,9 +7,11 @@ module TsukubaMesinavi
         get_result(TsukubaMesinavi::Entity::RequestPlaceDetails::END_POINT, request.create_request) do |response|
           result = response["result"]
           return if result.nil?
-          place_details = TsukubaMesinavi::Entity::ResponsePlaceDetails.new(result["name"],
+          place_details = TsukubaMesinavi::Entity::ResponsePlaceDetails.new(request.place_id,
+                                                                            result["name"],
                                                                             result["opening_hours"],
-                                                                            result["photos"],
+                                                                            result["geometry"]["location"]["lat"],
+                                                                            result["geometry"]["location"]["lng"],
                                                                             result["website"])
         end
       end
@@ -20,7 +22,8 @@ module TsukubaMesinavi
           result = response["result"]
           place_details[:name] = result["name"]
           place_details[:opening_hours] = result["opening_hours"]
-          place_details[:photos] = result["photos"]
+          place_details[:lat] = result["geometry"]["location"]["lat"]
+          place_details[:lng] = result["geometry"]["location"]["lng"]
           place_details[:website] = result["website"]
           place_details.to_json
         end

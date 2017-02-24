@@ -13,3 +13,23 @@ $height: 60px;
   height: $height;
   margin-left: 20px;
 }
+
+#login_menu {
+  display: inline;
+}
+
+#user_menu {
+  padding: 0;
+}
+
+#username {
+  text-align: center;
+}
+
+#user {
+  display: inline;
+}
+
+.line {
+  border-top: 1px solid #eeeeee;
+}
