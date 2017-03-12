@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'typhoeus'
 
+gem 'nested_form'
+
 #login
 gem 'devise'
 gem 'omniauth'
