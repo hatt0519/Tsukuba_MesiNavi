@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <% @shops.each do |shop| %>
-      <%= link_to shops_show_details_path(place_id: shop.place_id, lat: shop.lat, lng: shop.lng) do %>
+      <%= link_to shops_show_details_path(shop_id: shop.shop_id, place_id: shop.place_id, lat: shop.lat, lng: shop.lng) do %>
         <div id="shop_container" class="col-md-2">
           <%= image_tag("ramen.jpg", :alt => "イメージ", :class => "shop_image img-thumbnail") %>
           <p class="shop_description shop_name"><%= shop.name %></p>

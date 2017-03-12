@@ -1,0 +1,2 @@
+$("#categories").show().html('<%= j(render :partial => "categories", :locals => {:categories => @categories, :categories_owned_by_shop => @categories_owned_by_shop}) %>');
+$("#edit_categories").empty();

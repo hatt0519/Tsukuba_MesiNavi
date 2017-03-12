@@ -1,0 +1,23 @@
+<%@checked_categories.each do |category|%>
+  <%=check_box 'category', category[:category_id], {class:'category_checkbox', checked: category[:checked]}, category[:category_id] %>
+  <%=label 'category', category[:category_id], category[:name] %>
+<%end%>
+<div id="category_other_input">
+  <%=label :category, :other, 'その他を入力してください'%>
+  <%if @category_others.present? %>
+    <% @category_others.each do |category_other| %>
+      <!--div class="input-group"-->
+        <%=text_field_tag :category_other, category_other.name, class: 'form-control' %>
+        <!--span class="input-group-btn">
+          <button class="btn btn-default delete_btn" type="button">削除</button>
+        </span-->
+      <!--/div-->
+    <% end %>
+  <% else %>
+    <%= render partial: 'category_other'%>
+  <% end %>
+  <!--button id="add_category_other_input" class="btn btn-default">その他追加</button-->
+</div>
+<div id="submit_categories_group">
+  <button id="submit_categories" class="btn btn-default btn-block">変更を保存</button>
+</div>

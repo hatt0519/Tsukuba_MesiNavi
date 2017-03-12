@@ -4,9 +4,11 @@ module TsukubaMesinavi
 
       END_POINT = "https://maps.googleapis.com/maps/api/place/details/json"
 
+      attr_reader :shop_id
       attr_reader :place_id
 
-      def initialize(place_id)
+      def initialize(shop_id, place_id)
+        @shop_id = shop_id
         @place_id = place_id
       end
 

@@ -1,0 +1,3 @@
+$("#edit_categories").html('<%= j(render :partial => "edit_categories", :locals => {:categories => @categories, :categories_owned_by_shop => @categories_owned_by_shop}) %>');
+$("#categories").hide();
+initCategoryOther();
