@@ -3,7 +3,7 @@ function initMap() {
   var location = {lat: params.lat, lng: params.lng};
   var map = new google.maps.Map(document.getElementById('map'), {
       center: location,
-      zoom: 11
+      zoom: 13
   });
   var marker = new google.maps.Marker({
     position: location,

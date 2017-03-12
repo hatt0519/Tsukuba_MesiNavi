@@ -7,7 +7,8 @@ module TsukubaMesinavi
         get_result(TsukubaMesinavi::Entity::RequestPlaceDetails::END_POINT, request.create_request) do |response|
           result = response["result"]
           return if result.nil?
-          place_details = TsukubaMesinavi::Entity::ResponsePlaceDetails.new(request.place_id,
+          place_details = TsukubaMesinavi::Entity::ResponsePlaceDetails.new(request.shop_id,
+                                                                            request.place_id,
                                                                             result["name"],
                                                                             result["opening_hours"],
                                                                             result["geometry"]["location"]["lat"],

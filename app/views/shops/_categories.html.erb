@@ -1,0 +1,15 @@
+<%@categories_owned_by_shop.each do |category|%>
+  <%if category.category_id == 9%>
+    <p><%= category.name %></p>
+    <% @category_others.each do |category_other|%>
+      <ul>
+        <li><%= category_other.name %></li>
+      </ul>
+    <%end%>
+  <% else %>
+    <%= category.name %>
+  <%end%>
+<%end%>
+<%if user_signed_in? %>
+  <button id="edit_categories_button" class="btn btn-default">編集する</button>
+<%end%>
