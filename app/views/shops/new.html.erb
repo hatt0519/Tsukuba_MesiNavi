@@ -1,0 +1,39 @@
+<%= javascript_include_tag "maps/map" %>
+<%= javascript_include_tag "maps/map_new" %>
+<%= stylesheet_link_tag "map"%>
+<%= render partial: 'top'%>
+<div id="map" style="display:none"></div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=@api_key%>">
+</script>
+<div class="shop_category page-header">
+  <h1>お店の登録</h1>
+</div>
+<div class="container">
+  <table class="table">
+    <tbody>
+      <tr>
+        <th></th>
+        <th>
+          <% if @shop.errors.any? %>
+            <div class="alert alert-danger" role="alert">
+              <%= @shop.errors.messages[:name].shift%>
+            </div>
+          <%end%>
+        </th>
+      </tr>
+      <tr>
+        <td>店舗名</td>
+        <td id="shop_name_input">
+          <div class="input-group">
+            <%=text_field_tag :shop_name_text, '',class: 'form-control' %>
+            <span class="input-group-btn">
+              <button id="search" class="btn btn-default" type="button" disabled=true>検索</button>
+            </span>
+          </div>
+        </td>
+      </tr>
+      <tr id="shop_candidate"></tr>
+    </tbody>
+  </table>
+</div>
+<%= render partial: 'loading'%>

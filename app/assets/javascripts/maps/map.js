@@ -1,15 +1,5 @@
-function initMap() {
-  var params = getUrlParams();
-  var location = {lat: params.lat, lng: params.lng};
-  var map = new google.maps.Map(document.getElementById('map'), {
-      center: location,
-      zoom: 13
-  });
-  var marker = new google.maps.Marker({
-    position: location,
-    map: map,
-  });
-}
+var map;
+var marker;
 
 function getUrlParams() {
   var params = {};
@@ -38,4 +28,25 @@ function detectUserAgent() {
       mapdiv.style.height = '800px';
     }
 
+}
+
+function drawMap(location) {
+  map = new google.maps.Map(document.getElementById('map'), {
+      center: location,
+      zoom: 13
+  });
+  marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+}
+
+function setMapStatus(location) {
+  if(map !== null) {
+    map.setCenter(location);
+  }
+  if(marker !== null) {
+    marker.setMap(map);
+    marker.setPosition(location);
+  }
 }

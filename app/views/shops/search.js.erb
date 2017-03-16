@@ -1,0 +1,4 @@
+var lat = <%= @lat%>
+var lng = <%= @lng%>
+$("#shop_candidate").html('<%= j(render :partial => "search_result", :locals => {:shops => @shops}) %>');
+initMap(lat, lng);

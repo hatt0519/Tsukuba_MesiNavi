@@ -1,13 +1,10 @@
 <%= render 'shops/top'%>
 <div id="search_button">
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#loading">開店しているお店を探す</button>
+  <%if user_signed_in?%>
+    <%= link_to "お店追加", new_shop_path, {class: 'btn btn-info btn-lg'}%>
+  <% end %>
 </div>
-<div class="modal fade" id="loading">
-  <div class="modal-dialog modal-lg modal-middle">
-    <div class="modal-body">
-      <%= image_tag("loading.gif", :size => "200×200") %>
-    </div>
-  </div>
-</div>
+<%= render partial: 'loading'%>
 
 <div id="now_open_shop"></div>

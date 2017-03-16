@@ -1,0 +1,16 @@
+<td>候補</td>
+<td>
+  <%= form_for(@shop, url: {action: 'create'}) do |f|%>
+    <%if @shop.errors.any?%>
+      <% @shop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <%end%>
+    <%= f.select :place_id, @shops.map{|shop| [shop.name, shop.place_id]}, {}, {class: 'form-control'}%>
+    <%= f.hidden_field :name%>
+    <%@shops.each do |shop|%>
+      <%=hidden_field_tag shop.place_id, {lat: shop.lat, lng: shop.lng}.to_json %>
+    <%end%>
+    <%= f.submit("登録", {class: 'form-control', id: "submit_shop_info"})%>
+  <%end%>
+</td>
