@@ -1,1 +1,58 @@
-<%= render shops/top %>
+<%= javascript_include_tag "maps/map" %>
+<%= javascript_include_tag "maps/map_show" %>
+<%= javascript_include_tag "shop_show"%>
+<%= stylesheet_link_tag "map"%>
+<div id="map"></div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= @api_key%>&callback=initMap">
+</script>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>店舗名</td>
+      <td><%= @shop_api.name %></td>
+    </tr>
+    <tr>
+      <td>営業時間</td>
+      <td>
+        <ul style="list-style:none; margin-left: 0; padding-left: 0;">
+          <%@shop_api.opening_hours["weekday_text"].each_with_index do |opening_hour, week|%>
+            <%if week != @week%>
+              <li><%=opening_hour%></li>
+            <%else%>
+              <li><%=opening_hour%><span class="label label-info">Today</span></li>
+            <%end%>
+          <%end%>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>ジャンル</td>
+      <td>
+        <div id="edit_categories"></div>
+        <div id="categories">
+          <%= render partial: 'categories' %>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="modal fade" id="registed">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">新しいお店登録完了</h4>
+      </div>
+      <div class="modal-body">
+        <p><%= @shop_api.name %>を新しく登録しました</p>
+        <p>このページでお店の画像やジャンルを編集することができます</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root :to => 'shops#index'
-  post 'shops/show'
-  get 'shops/show_details'
+  resources 'shops'
+  post 'shops/show_now_open'
+  post 'shops/search'
   post 'shops/edit_categories'
   post 'shops/update_categories'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
