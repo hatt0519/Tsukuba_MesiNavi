@@ -6,12 +6,15 @@ $(function(){
   selectCategoryOther();
   editCategories();
   submitCategories();
+  searchForShop();
+  showLoadingWaitingSaveShop();
+  validateShopNameInput();
 })
 
 function requestOpenShops() {
   $("#search_button").on('click', function(){
     $.ajax({
-      url: location.href+'/../shops/show.js',
+      url: location.href+'/../shops/show_now_open.js',
       type: "POST",
     });
     $("#search_button").hide();
@@ -79,4 +82,47 @@ function addCategoryOtherInput() {
   $("#category_other_input").on('click', '#add_category_other_input', function(){
 
   });
+}
+
+function searchForShop() {
+  $("#search").on('click', function() {
+    var shopName = document.getElementById("shop_name_text").value;
+    var urlArray = location.href.split("/");
+    var action = urlArray[urlArray.length - 1];
+    var url = "";
+    if(action === "new") {
+      url = location.href + '/../search.js';
+    } else {
+      url = location.href + '/search.js';
+    }
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: {name: shopName}
+    });
+  });
+}
+
+function showLoadingWaitingSaveShop() {
+  $("#shop_candidate").on('click', "#submit_shop_info", function(){
+    var id = "#loading";
+    showModal(id, true);
+  });
+}
+
+function validateShopNameInput() {
+  var shopNameText = document.getElementById("shop_name_text");
+  if(shopNameText) {
+    shopNameText.addEventListener('keyup', function(){
+      var text = shopNameText.value;
+      var button = document.getElementById("search");
+      button.disabled = text === "";
+    });
+  }
+}
+
+function showModal(id, needShow) {
+  if(needShow) {
+    $(id).modal("show");
+  }
 }
